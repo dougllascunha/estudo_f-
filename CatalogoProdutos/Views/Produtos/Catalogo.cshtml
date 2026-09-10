@@ -1,0 +1,52 @@
+@model List<ProdutoDto>
+@{
+    ViewData["Title"] = "Exercício 3 — Catálogo";
+}
+
+<h1>Exercício 3 — Catálogo com Records e DTOs</h1>
+
+<div class="card">
+    <p>
+        A View recebe apenas <code>ProdutoDto</code> (Id, Nome, Preco) — o campo
+        <code>Estoque</code>, que existe na entidade <code>Produto</code>, nunca chega até aqui.
+    </p>
+</div>
+
+<table>
+    <thead>
+        <tr><th>Id</th><th>Nome</th><th>Preço</th><th>Ação</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var produto in Model)
+        {
+            <tr id="linha-@produto.Id">
+                <td>@produto.Id</td>
+                <td>@produto.Nome</td>
+                <td class="preco-@produto.Id">R$ @produto.Preco.ToString("N2")</td>
+                <td>
+                    <button type="button" onclick="aplicarDesconto(@produto.Id)">
+                        Aplicar 20% de desconto
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script>
+        async function aplicarDesconto(id) {
+            const params = new URLSearchParams();
+            params.append('id', id);
+            params.append('percentual', 0.20);
+
+            const resp = await fetch('/Produtos/AplicarDesconto', { method: 'POST', body: params });
+            const data = await resp.json();
+
+            // Mostra o novo preço, mas o original no servidor (_catalogo) não mudou —
+            // é exatamente o comportamento do 'with' visto na teoria.
+            document.querySelector('.preco-' + id).innerText =
+                'R$ ' + data.comDesconto.preco.toFixed(2) + ' (promoção)';
+        }
+    </script>
+}

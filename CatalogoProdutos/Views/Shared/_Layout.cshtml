@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] — Aula C# Avançado & .NET</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<body>
+    <header class="topbar">
+        <a class="brand" href="/">C# Avançado &amp; .NET — ADS/UNIP</a>
+        <nav>
+            <a href="/Pedidos/Classificar">Ex. 1 · Pedidos</a>
+            <a href="/Clientes/Auditoria">Ex. 2 · Auditoria</a>
+            <a href="/Produtos/Catalogo">Ex. 3 · Catálogo</a>
+            <a href="/Importacao/Upload">Ex. 4 · Importação</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        @RenderBody()
+    </main>
+
+    <footer class="footer">
+        ADS · UNIP · Prof. Fabricio Freire
+    </footer>
+
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

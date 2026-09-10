@@ -1,0 +1,33 @@
+@{
+    ViewData["Title"] = "Exercício 4 — Importação";
+}
+
+<h1>Exercício 4 — Importação de CSV com Span e ArrayPool</h1>
+
+<div class="card">
+    <p>
+        Envie um arquivo <code>.csv</code> com linhas no formato
+        <code>id;nome;preco</code> (ex.: <code>10;Mouse;89.90</code>).
+        O parsing de cada linha usa <code>ReadOnlySpan&lt;char&gt;</code> —
+        sem <code>Split()</code> — e a leitura do arquivo usa um buffer
+        alugado do <code>ArrayPool&lt;byte&gt;</code>.
+    </p>
+
+    @if (!ViewData.ModelState.IsValid)
+    {
+        <p style="color: crimson">@ViewData.ModelState[""]?.Errors.FirstOrDefault()?.ErrorMessage</p>
+    }
+
+    <form method="post" enctype="multipart/form-data" asp-action="Upload">
+        <input type="file" name="arquivoCsv" accept=".csv" required />
+        <button type="submit">Processar arquivo</button>
+    </form>
+</div>
+
+<div class="card">
+    <h3>Não tem um arquivo à mão?</h3>
+    <p>Crie um arquivo <code>produtos.csv</code> com este conteúdo e envie:</p>
+    <pre>10;Mouse Gamer;89.90
+11;Teclado Mecânico;320.00
+12;Monitor 24;890.00</pre>
+</div>

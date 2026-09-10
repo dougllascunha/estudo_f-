@@ -1,0 +1,106 @@
+:root {
+    --primary: #512BD4;
+    --lime: #00E5A0;
+    --dark: #150829;
+    --light: #F6F4FC;
+    --text: #1B0E3D;
+}
+
+* { box-sizing: border-box; }
+
+body {
+    font-family: Segoe UI, Calibri, Arial, sans-serif;
+    margin: 0;
+    background: var(--light);
+    color: var(--text);
+}
+
+.topbar {
+    background: var(--dark);
+    color: white;
+    padding: 14px 28px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.topbar .brand {
+    color: var(--lime);
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.topbar nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 18px;
+    font-size: 14px;
+}
+
+.topbar nav a:hover { color: var(--lime); }
+
+.container {
+    max-width: 900px;
+    margin: 32px auto;
+    padding: 0 20px;
+}
+
+.card {
+    background: white;
+    border: 1px solid #E3DEF7;
+    border-radius: 10px;
+    padding: 18px 22px;
+    margin-bottom: 16px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+}
+
+th, td {
+    text-align: left;
+    padding: 10px 12px;
+    border-bottom: 1px solid #E3DEF7;
+}
+
+th { background: var(--primary); color: white; }
+
+.badge {
+    display: inline-block;
+    background: var(--lime);
+    color: var(--dark);
+    font-weight: bold;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 13px;
+}
+
+form.inline { display: inline; }
+
+input, button {
+    font-family: inherit;
+    font-size: 14px;
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+button {
+    background: var(--primary);
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover { opacity: 0.9; }
+
+.footer {
+    text-align: center;
+    color: #8b83a8;
+    font-size: 13px;
+    padding: 24px;
+}

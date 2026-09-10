@@ -1,0 +1,31 @@
+@model IReadOnlyList<(string Nome, int Nivel)>
+@{
+    ViewData["Title"] = "Exercício 2 — Auditoria";
+}
+
+<h1>Exercício 2 — Auditoria Automática via Atributos</h1>
+
+<div class="card">
+    <p>
+        Campos da classe <code>Cliente</code> marcados com <code>[Sensivel]</code>,
+        descobertos via reflexão e cacheados no <code>AuditoriaService</code>
+        (registrado como <em>Singleton</em>).
+    </p>
+    <p>Atualize a página (F5): a lista continua igual, mas da 2ª vez em diante
+       o resultado vem do cache — nenhuma reflexão nova é executada.</p>
+</div>
+
+<table>
+    <thead>
+        <tr><th>Campo</th><th>Nível de sensibilidade</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var campo in Model)
+        {
+            <tr>
+                <td>@campo.Nome</td>
+                <td><span class="badge">Nível @campo.Nivel</span></td>
+            </tr>
+        }
+    </tbody>
+</table>

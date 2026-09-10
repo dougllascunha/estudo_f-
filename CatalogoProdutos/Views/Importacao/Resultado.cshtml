@@ -1,0 +1,29 @@
+@model List<ProdutoLinha>
+@{
+    ViewData["Title"] = "Resultado da Importação";
+}
+
+<h1>Exercício 4 — Resultado da Importação</h1>
+
+<div class="card">
+    <p>@Model.Count linha(s) processada(s) via <code>ParserCsvService</code>, usando
+       <code>Span</code> para o parsing e <code>ArrayPool&lt;byte&gt;</code> para o buffer de leitura.</p>
+</div>
+
+<table>
+    <thead>
+        <tr><th>Id</th><th>Nome</th><th>Preço</th></tr>
+    </thead>
+    <tbody>
+        @foreach (var produto in Model)
+        {
+            <tr>
+                <td>@produto.Id</td>
+                <td>@produto.Nome</td>
+                <td>R$ @produto.Preco.ToString("N2")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<p><a href="/Importacao/Upload">← Importar outro arquivo</a></p>
